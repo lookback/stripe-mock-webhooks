@@ -25,6 +25,6 @@
     "assign-deep": "^0.4.2",
     "needle": "^0.11.0",
     "promise": "^7.0.4",
-    "stripe-mock-data": "git@github.com:lookback/stripe-mock-data.git#54f2daaa3a03d6262b9ee954c14dd168ce072f2c"
+    "stripe-mock-data": "git@github.com:lookback/stripe-mock-data.git#b290d93fe141b65c928fc4b871102da5d897d58b"
   }
 }
