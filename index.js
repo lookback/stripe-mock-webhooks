@@ -28,7 +28,7 @@ module.exports = exports = function StripeMockWebhooks (options) {
  * Latest Stripe API version
  * @type {String}
  */
-exports.LATEST_STRIPE_VERSION = '2015-10-01'
+exports.LATEST_STRIPE_VERSION = '2016-07-06'
 
 /**
  * Build Stripe Event Response

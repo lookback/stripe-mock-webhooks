@@ -3,7 +3,7 @@ var assert = require('assert')
 var http = require('http')
 
 // Check latest stripe version
-assert(StripeMockWebhooks.LATEST_STRIPE_VERSION === '2015-10-01')
+assert(StripeMockWebhooks.LATEST_STRIPE_VERSION === '2016-07-06')
 
 // Build webhooks object
 var webhooks = new StripeMockWebhooks({
@@ -43,7 +43,7 @@ var server = http.createServer(function (req, res) {
 server.listen(3001)
 
 // Invoke a webhook
-webhooks.trigger('invoice.created').then(function (response) {
+webhooks.trigger('invoice_created').then(function (response) {
   assert.equal(response.statusCode, 200)
   assert.equal(response.body.type, 'invoice.created')
 }).catch(function (err) {
@@ -52,11 +52,26 @@ webhooks.trigger('invoice.created').then(function (response) {
 })
 
 // Invoke a webhook with properties
-webhooks.trigger('invoice.created', { livemode: true }).then(function (response) {
+webhooks.trigger('invoice_created', { livemode: true }).then(function (response) {
   assert.equal(response.statusCode, 200)
   assert.equal(response.body.type, 'invoice.created')
   assert.equal(response.body.livemode, true)
   server.close()
+}).catch(function (err) {
+  console.trace(err)
+  process.exit(1)
+})
+
+// Build webhooks object for latest version
+var webhooks = new StripeMockWebhooks({
+  version: '2016-07-06',
+  url: 'http://localhost:3001/stripe/events'
+})
+
+// Invoke a webhook that didn't exist in previous version
+webhooks.trigger('customer.source.created').then(function (response) {
+  assert.equal(response.statusCode, 200)
+  assert.equal(response.body.type, 'customer.source.created')
 }).catch(function (err) {
   console.trace(err)
   process.exit(1)
