@@ -1,6 +1,6 @@
 {
   "name": "stripe-mock-webhooks",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Test Stripe Webhooks, no internet required",
   "repository": "Nijikokun/stripe-mock-webhooks",
   "main": "index.js",
@@ -25,6 +25,6 @@
     "assign-deep": "^0.4.2",
     "needle": "^0.11.0",
     "promise": "^7.0.4",
-    "stripe-mock-data": "git@github.com:lookback/stripe-mock-data.git#b290d93fe141b65c928fc4b871102da5d897d58b"
+    "stripe-mock-data": "git@github.com:lookback/stripe-mock-data.git#095feebd02677a6615e5f2013686cbf7ed1a69a0"
   }
 }
